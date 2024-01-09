@@ -18,20 +18,29 @@ public class MenuUI
         {
             Console.Clear();
 
-            foreach (var i in _items ?? Array.Empty<string>())
+            for (int i = 0; i < _items?.Length; i++)
             {
-                if (i == _items?.ElementAt(_selectedOption))
-                {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                }
+                if (i == _selectedOption)
+                    (Console.BackgroundColor, Console.ForegroundColor) = (ConsoleColor.White, ConsoleColor.Black);
 
-                Console.WriteLine(new string(' ', 20) + i);
+                Console.WriteLine($"{_items[i],30}  ");
 
                 Console.ResetColor();
             }
 
-            Console.ReadKey();
+            HandleInput();
+        }
+    }
+
+    public static void HandleInput()
+    {
+        int endIndex = _items?.Length - 1 ?? 0;
+
+        switch (Console.ReadKey(true).Key)
+        {
+            case ConsoleKey.UpArrow when _selectedOption > 0: _selectedOption--; break;
+            case ConsoleKey.DownArrow when _selectedOption < endIndex: _selectedOption++; break;
+            default: HandleInput(); break;
         }
     }
 }
