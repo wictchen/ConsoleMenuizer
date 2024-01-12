@@ -40,6 +40,8 @@ public class MenuUI
         {
             case ConsoleKey.UpArrow when _selectedOption > 0: _selectedOption--; break;
             case ConsoleKey.DownArrow when _selectedOption < endIndex: _selectedOption++; break;
+            case ConsoleKey.UpArrow when _selectedOption == 0: _selectedOption = endIndex; break;
+            case ConsoleKey.DownArrow when _selectedOption == endIndex: _selectedOption = 0; break;
             default: HandleInput(); break;
         }
     }
