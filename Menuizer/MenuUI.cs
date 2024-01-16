@@ -10,11 +10,13 @@ public class MenuUI
         Console.CursorVisible = false;
     }
 
+    public static int SelectedOption { get => _selectedOption; }
+
     public static void DrawMenu(params string[] items)
     {
         _items = items;
 
-        while (true)
+        do
         {
             Console.Clear();
 
@@ -28,11 +30,10 @@ public class MenuUI
                 Console.ResetColor();
             }
 
-            HandleInput();
-        }
+        } while (!HandleInput());
     }
 
-    public static void HandleInput()
+    private static bool HandleInput()
     {
         int endIndex = _items?.Length - 1 ?? 0;
 
@@ -42,7 +43,10 @@ public class MenuUI
             case ConsoleKey.DownArrow when _selectedOption < endIndex: _selectedOption++; break;
             case ConsoleKey.UpArrow when _selectedOption == 0: _selectedOption = endIndex; break;
             case ConsoleKey.DownArrow when _selectedOption == endIndex: _selectedOption = 0; break;
+            case ConsoleKey.Enter: return true;
             default: HandleInput(); break;
         }
+
+        return false;
     }
 }
