@@ -11,5 +11,11 @@ public class Menu
         actions[key].Invoke();
     }
 
+    public static void Reset()
+    {
+        MenuUI.HeaderMessage = null;
+        MenuUI.Message = null;
+    }
+
     public static void Exit() => Environment.Exit(0);
 }

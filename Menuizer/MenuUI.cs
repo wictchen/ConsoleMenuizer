@@ -54,7 +54,7 @@ public class MenuUI
             case ConsoleKey.DownArrow when _selectedOption < endIndex: _selectedOption++; break;
             case ConsoleKey.UpArrow when _selectedOption == 0: _selectedOption = endIndex; break;
             case ConsoleKey.DownArrow when _selectedOption == endIndex: _selectedOption = 0; break;
-            case ConsoleKey.Enter: return true;
+            case ConsoleKey.Enter: Menu.Reset(); return true;
             default: HandleInput(); break;
         }
 
