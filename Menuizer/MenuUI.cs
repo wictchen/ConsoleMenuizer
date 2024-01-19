@@ -19,6 +19,7 @@ public class MenuUI
     public static void DrawMenu(params string[] items)
     {
         _items = items;
+        _selectedOption = 0;
 
         do
         {
