@@ -6,12 +6,12 @@ public partial class Screens
     {
         Console.Title = "Menuizer";
         MenuUI.HeaderMessage = "Main Menu";
-        MenuUI.DrawMenu("Item 1", "Item 2", "Item 3");
-        switch (MenuUI.SelectedOption)
+        Menu.Navigation(new()
         {
-            case 0: Screen1(); break;
-            case 1: Screen2(); break;
-            case 2: Screen3(); break;
-        }
+            { "Item 1", Screen1 },
+            { "Item 2", Screen2 },
+            { "Item 3", Screen3 },
+            { "Exit", Menu.Exit }
+        });
     }
 }
