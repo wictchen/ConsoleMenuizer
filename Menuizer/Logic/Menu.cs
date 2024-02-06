@@ -2,8 +2,17 @@
 
 public class Menu
 {
-    public static void Navigation(Dictionary<string, Action> actions)
+    public static void Build(Dictionary<string, Action> actions, string? consoleTitle = null, string? headerMessage = null, string? message = null)
     {
+        if (!string.IsNullOrEmpty(consoleTitle))
+            Console.Title = consoleTitle;
+
+        if (!string.IsNullOrEmpty(headerMessage))
+            MenuUI.HeaderMessage = headerMessage;
+
+        if (!string.IsNullOrEmpty(message))
+            MenuUI.Message = message;
+
         var items = actions.Keys.ToArray();
         MenuUI.DrawMenu(items);
 
