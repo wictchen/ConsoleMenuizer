@@ -1,18 +1,9 @@
 ﻿namespace Menuizer;
 
-public class Menu
+public static class Menu
 {
-    public static void Build(Dictionary<string, Action> actions, string? consoleTitle = null, string? headerMessage = null, string? message = null)
+    public static void Build(Dictionary<string, Action> actions)
     {
-        if (!string.IsNullOrEmpty(consoleTitle))
-            Console.Title = consoleTitle;
-
-        if (!string.IsNullOrEmpty(headerMessage))
-            MenuUI.HeaderMessage = headerMessage;
-
-        if (!string.IsNullOrEmpty(message))
-            MenuUI.Message = message;
-
         var items = actions.Keys.ToArray();
         MenuUI.DrawMenu(items);
 
