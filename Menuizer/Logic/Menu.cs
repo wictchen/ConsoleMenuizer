@@ -13,7 +13,8 @@ public static class Menu
 
     public static void Reset()
     {
-        MenuUI.HeaderMessage = null;
+        MenuUI.WindowTitle = null;
+        MenuUI.HeaderTitle = null;
         MenuUI.Message = null;
     }
 
